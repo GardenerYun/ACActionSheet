@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="a3W-xs-Iur">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="R4v-Fn-aEe">
+            <objects>
+                <navigationController id="a3W-xs-Iur" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0fd-ve-4V3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="eRs-Ok-uQM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="opb-4Z-Q6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-596" y="403"/>
+        </scene>
+        <!--acha's demo-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ZZ-dI-m1J">
+                                <rect key="frame" x="150" y="110" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="LqF-M7-6xT"/>
+                                    <constraint firstAttribute="width" constant="300" id="Um6-Ol-p1R"/>
+                                </constraints>
+                                <state key="normal" title="系统UIActionSheet"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="reversesTitleShadowWhenHighlighted" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="_showUIActionSheet:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pNh-A1-Oxr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9l-kx-wsP">
+                                <rect key="frame" x="150" y="190" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="oIh-7Z-7eY"/>
+                                    <constraint firstAttribute="width" constant="300" id="wSF-EK-o2N"/>
+                                </constraints>
+                                <state key="normal" title="系统UIAlertController"/>
+                                <connections>
+                                    <action selector="_showUIAlertController:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zrL-F1-Luo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWF-jy-hOn">
+                                <rect key="frame" x="150" y="350" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="MlZ-Gh-vjq"/>
+                                    <constraint firstAttribute="width" constant="300" id="MrZ-oY-H9O"/>
+                                </constraints>
+                                <state key="normal" title="ACActionSheet  block"/>
+                                <connections>
+                                    <action selector="_showACActionSheetTypeBlock:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fZa-A2-CH1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihe-yZ-int">
+                                <rect key="frame" x="150" y="270" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Rzl-vy-V2E"/>
+                                    <constraint firstAttribute="height" constant="40" id="kkt-3b-oAF"/>
+                                </constraints>
+                                <state key="normal" title="ACActionSheet  delegate"/>
+                                <connections>
+                                    <action selector="_showACActionSheetTypeDelegate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hZB-mC-8ej"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ihe-yZ-int" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="82e-q3-odG"/>
+                            <constraint firstItem="R9l-kx-wsP" firstAttribute="top" secondItem="1ZZ-dI-m1J" secondAttribute="bottom" constant="40" id="KCh-Dh-rOM"/>
+                            <constraint firstItem="1ZZ-dI-m1J" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RgM-uK-9Jk"/>
+                            <constraint firstItem="xWF-jy-hOn" firstAttribute="top" secondItem="ihe-yZ-int" secondAttribute="bottom" constant="40" id="bEl-7J-x7f"/>
+                            <constraint firstItem="ihe-yZ-int" firstAttribute="top" secondItem="R9l-kx-wsP" secondAttribute="bottom" constant="40" id="mNR-jC-iUL"/>
+                            <constraint firstItem="xWF-jy-hOn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vBH-GB-d53"/>
+                            <constraint firstItem="1ZZ-dI-m1J" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="90" id="wed-AK-dnB"/>
+                            <constraint firstItem="R9l-kx-wsP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zCw-eS-ybn"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="acha's demo" id="hAo-Wv-XVQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="150" y="403"/>
+        </scene>
+    </scenes>
+</document>
