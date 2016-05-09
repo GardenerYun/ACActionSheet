@@ -23,7 +23,7 @@
 }
 
 
-/**
+/** 
  *  系统 - UIActionSheet demo
  */
 - (IBAction)_showUIActionSheet:(UIButton *)sender {
@@ -33,7 +33,7 @@
     [actionSheet showInView:self.view];
 }
 
-/**
+/** 
  *  系统 - UIAlertController demo
  */
 - (IBAction)_showUIAlertController:(UIButton *)sender {
@@ -47,26 +47,32 @@
     UIAlertAction *archiveAction = [UIAlertAction actionWithTitle:@"保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSLog(@"UIAlertController - 保存");
     }];
-    UIAlertAction *changeAction = [UIAlertAction actionWithTitle:@"更改" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"UIAlertController - 更改");
-    }];
+
     [alertController addAction:cancelAction];
     [alertController addAction:deleteAction];
     [alertController addAction:archiveAction];
-    [alertController addAction:changeAction];
     
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+
+/**
+ *   ACActionSheet type delegate demo
+ */
 - (IBAction)_showACActionSheetTypeDelegate:(UIButton *)sender {
 
-    ACActionSheet *actionSheet = [[ACActionSheet alloc] initWithTitle:@"保存或删除数据" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"删除",@"保存",@"更改", nil];
+    ACActionSheet *actionSheet = [[ACActionSheet alloc] initWithTitle:@"保存或删除数据" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"保存",@"更改", nil];
 
     [actionSheet show];
 }
 
+
+
+/** 
+ *   ACActionSheet type block demo 
+ */
 - (IBAction)_showACActionSheetTypeBlock:(UIButton *)sender {
-    ACActionSheet *actionSheet = [[ACActionSheet alloc] initWithTitle:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"小视频",@"拍照",@"从手机相册选择"] actionSheetBlock:^(NSInteger buttonIndex) {
+    ACActionSheet *actionSheet = [[ACActionSheet alloc] initWithTitle:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@[@"小视频",@"拍照",@"从手机相册选择"] actionSheetBlock:^(NSInteger buttonIndex) {
         NSLog(@"ACActionSheet block - %ld",buttonIndex);
     }];
     [actionSheet show];

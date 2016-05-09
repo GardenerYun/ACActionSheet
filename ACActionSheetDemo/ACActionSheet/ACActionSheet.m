@@ -5,6 +5,11 @@
 //  Created by Zhangziyun on 16/5/3.
 //  Copyright © 2016年 章子云. All rights reserved.
 //
+//  GitHub:     https://github.com/GardenerYun
+//  Email:      gardeneryun@foxmail.com
+//  简书博客地址: http://www.jianshu.com/users/8489e70e237d/latest_articles
+//  如有问题或建议请联系我，我会马上回馈问题~ (ง •̀_•́)ง
+//
 
 #import "ACActionSheet.h"
 
@@ -12,6 +17,8 @@
 #define ACScreenHeight  [UIScreen mainScreen].bounds.size.height
 #define ACRGB(r,g,b)    [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
 #define ACTitleFont     [UIFont systemFontOfSize:18.0f]
+
+#define ACTitleHeight 60.0f
 #define ACButtonHeight  49.0f
 
 #define ACDarkShadowViewAlpha 0.3f
@@ -22,6 +29,7 @@
 @interface ACActionSheet () {
     
     NSString *_cancelButtonTitle;
+    NSString *_destructiveButtonTitle;
     NSArray *_otherButtonTitles;
     
     
@@ -36,15 +44,21 @@
 
 @implementation ACActionSheet
 
-- (instancetype)initWithTitle:(NSString *)title delegate:(id<ACActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle  otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION {
+- (instancetype)initWithTitle:(NSString *)title delegate:(id<ACActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION {
 
     self = [super init];
     if(self) {
         _title = title;
         _delegate = delegate;
         _cancelButtonTitle = cancelButtonTitle.length>0 ? cancelButtonTitle : @"取消";
+        _destructiveButtonTitle = destructiveButtonTitle;
         
         NSMutableArray *args = [NSMutableArray array];
+        
+        if(_destructiveButtonTitle.length) {
+            [args addObject:_destructiveButtonTitle];
+        }
+        
         [args addObject:otherButtonTitles];
         
         if (otherButtonTitles) {
@@ -68,13 +82,20 @@
 }
 
 
-- (instancetype)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles actionSheetBlock:(ACActionSheetBlock)actionSheetBlock {
+- (instancetype)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles actionSheetBlock:(ACActionSheetBlock) actionSheetBlock; {
     
     self = [super init];
     if(self) {
         _title = title;
         _cancelButtonTitle = cancelButtonTitle.length>0 ? cancelButtonTitle : @"取消";
-        _otherButtonTitles = otherButtonTitles;
+        _destructiveButtonTitle = destructiveButtonTitle;
+        
+        NSMutableArray *titleArray = [NSMutableArray array];
+        if (_destructiveButtonTitle.length) {
+            [titleArray addObject:_destructiveButtonTitle];
+        }
+        [titleArray addObjectsFromArray:otherButtonTitles];
+        _otherButtonTitles = [NSArray arrayWithArray:titleArray];
         self.actionSheetBlock = actionSheetBlock;
         
         [self _initSubViews];
@@ -105,7 +126,7 @@
     [self addSubview:_buttonBackgroundView];
     
     if (self.title.length) {
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ACScreenWidth, ACButtonHeight)];
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, ACButtonHeight-ACTitleHeight, ACScreenWidth, ACTitleHeight)];
         titleLabel.text = _title;
         titleLabel.numberOfLines = 0;
         titleLabel.textColor = [UIColor darkGrayColor];
@@ -123,6 +144,9 @@
         button.backgroundColor = [UIColor whiteColor];
         button.titleLabel.font = ACTitleFont;
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        if (i==0 && _destructiveButtonTitle.length) {
+            [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        }
         UIImage *image = [UIImage imageNamed:@"ACActionSheet.bundle/actionSheetHighLighted.png"];
         [button setBackgroundImage:image forState:UIControlStateHighlighted];
         [button addTarget:self action:@selector(_didClickButton:) forControlEvents:UIControlEventTouchUpInside];
