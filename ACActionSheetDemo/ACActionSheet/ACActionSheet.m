@@ -8,7 +8,7 @@
 //  GitHub:     https://github.com/GardenerYun
 //  Email:      gardeneryun@foxmail.com
 //  简书博客地址: http://www.jianshu.com/users/8489e70e237d/latest_articles
-//  如有问题或建议请联系我，我会马上回馈问题~ (ง •̀_•́)ง
+//  如有问题或建议请联系我，我会马上解决问题~ (ง •̀_•́)ง
 //
 
 #import "ACActionSheet.h"
