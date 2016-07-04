@@ -129,7 +129,7 @@
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, ACButtonHeight-ACTitleHeight, ACScreenWidth, ACTitleHeight)];
         titleLabel.text = _title;
         titleLabel.numberOfLines = 0;
-        titleLabel.textColor = [UIColor darkGrayColor];
+        titleLabel.textColor = ACRGB(125, 125, 125);
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.font = [UIFont systemFontOfSize:13.0f];
         titleLabel.backgroundColor = [UIColor whiteColor];
@@ -156,7 +156,7 @@
         
         
         UIView *line = [[UIView alloc] initWithFrame:CGRectZero];
-        line.backgroundColor = ACRGB(200, 200, 200);
+        line.backgroundColor = ACRGB(210, 210, 210);
         line.frame = CGRectMake(0, buttonY, ACScreenWidth, 0.5);
         [_buttonBackgroundView addSubview:line];
     }

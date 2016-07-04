@@ -44,13 +44,13 @@
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         NSLog(@"UIAlertController - 删除");
     }];
-    UIAlertAction *archiveAction = [UIAlertAction actionWithTitle:@"保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSLog(@"UIAlertController - 保存");
     }];
 
     [alertController addAction:cancelAction];
     [alertController addAction:deleteAction];
-    [alertController addAction:archiveAction];
+    [alertController addAction:saveAction];
     
     [self presentViewController:alertController animated:YES completion:nil];
 }
