@@ -21,7 +21,7 @@
 #define ACTitleHeight 60.0f
 #define ACButtonHeight  49.0f
 
-#define ACDarkShadowViewAlpha 0.3f
+#define ACDarkShadowViewAlpha 0.35f
 
 #define ACShowAnimateDuration 0.3f
 #define ACHideAnimateDuration 0.2f
@@ -113,7 +113,7 @@
     self.hidden = YES;
     
     _darkShadowView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ACScreenWidth, ACScreenHeight)];
-    _darkShadowView.backgroundColor = ACRGB(30, 30, 30);
+    _darkShadowView.backgroundColor = ACRGB(20, 20, 20);
     _darkShadowView.alpha = 0.0f;
     [self addSubview:_darkShadowView];
     
@@ -181,7 +181,7 @@
 
 - (void)_didClickButton:(UIButton *)button {
 
-    if (_delegate && [_delegate respondsToSelector:@selector(actionSheet:clickedButtonAtIndex:)]) {
+    if (_delegate && [_delegate respondsToSelector:@selector(actionSheet:didClickedButtonAtIndex:)]) {
         [_delegate actionSheet:self didClickedButtonAtIndex:button.tag];
     }
     
@@ -194,7 +194,7 @@
 
 - (void)_dismissView:(UITapGestureRecognizer *)tap {
 
-    if (_delegate && [_delegate respondsToSelector:@selector(actionSheet:clickedButtonAtIndex:)]) {
+    if (_delegate && [_delegate respondsToSelector:@selector(actionSheet:didClickedButtonAtIndex:)]) {
         [_delegate actionSheet:self didClickedButtonAtIndex:_otherButtonTitles.count];
     }
     
