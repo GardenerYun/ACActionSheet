@@ -171,10 +171,15 @@
     [cancelButton setBackgroundImage:image forState:UIControlStateHighlighted];
     [cancelButton addTarget:self action:@selector(_didClickButton:) forControlEvents:UIControlEventTouchUpInside];
     CGFloat buttonY = ACButtonHeight * (_otherButtonTitles.count + (_title.length>0?1:0)) + 5;
-    cancelButton.frame = CGRectMake(0, buttonY, ACScreenWidth, ACButtonHeight);
+    CGFloat cancelBtnH = ACButtonHeight;
+    if (@available(iOS 11.0, *)) {
+        cancelBtnH = cancelBtnH + [UIApplication sharedApplication].keyWindow.safeAreaInsets.bottom;
+        cancelButton.contentEdgeInsets = UIEdgeInsetsMake(0, 0, [UIApplication sharedApplication].keyWindow.safeAreaInsets.bottom, 0);
+    }
+    cancelButton.frame = CGRectMake(0, buttonY, ACScreenWidth, cancelBtnH);
     [_buttonBackgroundView addSubview:cancelButton];
     
-    CGFloat height = ACButtonHeight * (_otherButtonTitles.count+1 + (_title.length>0?1:0)) + 5;
+    CGFloat height = cancelBtnH + ACButtonHeight * (_otherButtonTitles.count + (_title.length>0?1:0)) + 5;
     _buttonBackgroundView.frame = CGRectMake(0, ACScreenHeight, ACScreenWidth, height);
     
 }
