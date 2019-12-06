@@ -34,7 +34,7 @@
 
 ----------
 
-##代码示例
+## 代码示例
    **[ACActionSheet][1]尽力按照苹果UIKit代码风格编写。initWith...创建 -> show方法 -> delegate或block监听事件**
    
 - **delegate模式 创建**
