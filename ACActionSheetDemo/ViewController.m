@@ -9,6 +9,7 @@
 
 #import "ViewController.h"
 #import "ACActionSheet.h"
+#import "UIAlertController+ACAlertView.h"
 
 @interface ViewController () <UIActionSheetDelegate, ACActionSheetDelegate>
 
@@ -19,9 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
 }
-
 
 /** 
  *  系统 - UIActionSheet demo
@@ -77,6 +76,19 @@
     }];
     [actionSheet show];
 }
+
+- (IBAction)_showUIAlertControllerAction:(id)sender {
+    
+//    [[UIAlertController alertControllerWithTitle:@"提示" message:@"保持或者删除数据" cancelButtonTitle:@"取消" confirmButtonTitle:@"确定" preferredStyle:UIAlertControllerStyleAlert alertViewBlock:^(NSInteger buttonIndex) {
+//        NSLog(@"UIAlertController 类目 - %@",@(buttonIndex));
+//    }] show] ;
+  
+    [[UIAlertController alertControllerWithTitle:@"提示" message:@"保持或者删除数据" cancelButtonTitle:@"取消" confirmButtonTitle:@"确定" otherButtonTitles:@[@"1",@"2",@"3",@"4"] preferredStyle:UIAlertControllerStyleAlert alertViewBlock:^(NSInteger buttonIndex) {
+        NSLog(@"UIAlertController 类目 - %@",@(buttonIndex));
+    }] show] ;
+    
+}
+
 
 
 #pragma mark - UIActionSheet delegate

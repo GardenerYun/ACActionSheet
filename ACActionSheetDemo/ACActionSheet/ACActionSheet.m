@@ -13,13 +13,19 @@
 
 #import "ACActionSheet.h"
 
+
 #define ACScreenWidth   [UIScreen mainScreen].bounds.size.width
 #define ACScreenHeight  [UIScreen mainScreen].bounds.size.height
 #define ACRGB(r,g,b)    [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
-#define ACTitleFont     [UIFont systemFontOfSize:18.0f]
+#define ACButtonTitleFont     [UIFont systemFontOfSize:17.0f]
 
-#define ACTitleHeight 60.0f
-#define ACButtonHeight  49.0f
+
+#define ACTitleHeight 66.0f
+#define ACButtonHeight  55.0f
+#define ACSeparatorViewHeight 7.0f
+
+
+#define ACViewCornerRadius 10.0f
 
 #define ACDarkShadowViewAlpha 0.35f
 
@@ -122,8 +128,10 @@
     
     
     _buttonBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-    _buttonBackgroundView.backgroundColor = ACRGB(220, 220, 220);
+    _buttonBackgroundView.backgroundColor = ACRGB(240, 240, 240);
     [self addSubview:_buttonBackgroundView];
+    _buttonBackgroundView.layer.cornerRadius = ACViewCornerRadius;
+    _buttonBackgroundView.clipsToBounds = YES;
     
     if (self.title.length) {
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, ACButtonHeight-ACTitleHeight, ACScreenWidth, ACTitleHeight)];
@@ -142,7 +150,7 @@
         button.tag = i;
         [button setTitle:_otherButtonTitles[i] forState:UIControlStateNormal];
         button.backgroundColor = [UIColor whiteColor];
-        button.titleLabel.font = ACTitleFont;
+        button.titleLabel.font = ACButtonTitleFont;
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         if (i==0 && _destructiveButtonTitle.length) {
             [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
@@ -156,30 +164,42 @@
         
         
         UIView *line = [[UIView alloc] initWithFrame:CGRectZero];
-        line.backgroundColor = ACRGB(210, 210, 210);
+        line.backgroundColor = ACRGB(230, 230, 230);
         line.frame = CGRectMake(0, buttonY, ACScreenWidth, 0.5);
         [_buttonBackgroundView addSubview:line];
     }
     
+    CGFloat separatorViewY = ACButtonHeight * (_otherButtonTitles.count + (_title.length>0?1:0));
+    
+    // 分割view
+    UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, separatorViewY, ACScreenWidth, ACSeparatorViewHeight)];
+    separatorView.backgroundColor = ACRGB(240, 240, 240);
+    [_buttonBackgroundView addSubview:separatorView];
+    
+    CGFloat safeAreaHeight = 0.0f;
+    
+    if (@available(iOS 11.0, *)) {
+        safeAreaHeight = [UIApplication sharedApplication].keyWindow.safeAreaInsets.bottom;
+    }
+    
     UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    cancelButton.frame = CGRectMake(0, separatorViewY+ACSeparatorViewHeight, ACScreenWidth, ACButtonHeight+safeAreaHeight);
+    
     cancelButton.tag = _otherButtonTitles.count;
     [cancelButton setTitle:_cancelButtonTitle forState:UIControlStateNormal];
     cancelButton.backgroundColor = [UIColor whiteColor];
-    cancelButton.titleLabel.font = ACTitleFont;
+    cancelButton.titleLabel.font = ACButtonTitleFont;
     [cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     UIImage *image = [UIImage imageNamed:@"ACActionSheet.bundle/actionSheetHighLighted.png"];
     [cancelButton setBackgroundImage:image forState:UIControlStateHighlighted];
+    
     [cancelButton addTarget:self action:@selector(_didClickButton:) forControlEvents:UIControlEventTouchUpInside];
-    CGFloat buttonY = ACButtonHeight * (_otherButtonTitles.count + (_title.length>0?1:0)) + 5;
-    CGFloat cancelBtnH = ACButtonHeight;
-    if (@available(iOS 11.0, *)) {
-        cancelBtnH = cancelBtnH + [UIApplication sharedApplication].keyWindow.safeAreaInsets.bottom;
-        cancelButton.contentEdgeInsets = UIEdgeInsetsMake(0, 0, [UIApplication sharedApplication].keyWindow.safeAreaInsets.bottom, 0);
-    }
-    cancelButton.frame = CGRectMake(0, buttonY, ACScreenWidth, cancelBtnH);
     [_buttonBackgroundView addSubview:cancelButton];
     
-    CGFloat height = cancelBtnH + ACButtonHeight * (_otherButtonTitles.count + (_title.length>0?1:0)) + 5;
+    [cancelButton setTitleEdgeInsets:UIEdgeInsetsMake(-safeAreaHeight, 0, 0, 0)];
+    
+    CGFloat height = ACButtonHeight * (_otherButtonTitles.count + (_title.length>0?1:0)) + ACSeparatorViewHeight + cancelButton.frame.size.height;
+    
     _buttonBackgroundView.frame = CGRectMake(0, ACScreenHeight, ACScreenWidth, height);
     
 }

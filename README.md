@@ -39,7 +39,7 @@
    
 - **delegate模式 创建**
 
-``` Objective-C
+```
 /**
  *  type delegate
  *
@@ -69,7 +69,7 @@ ACActionSheet *actionSheet = [[ACActionSheet alloc] initWithTitle:@"保存或删
 
 - **block模式 创建**
 
-``` Objective-C
+```
 typedef void(^ACActionSheetBlock)(NSInteger buttonIndex);
 
 /**
