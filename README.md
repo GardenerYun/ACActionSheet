@@ -17,10 +17,10 @@
 
 >  如有问题或建议请联系我，我会马上解决问题~ (ง •̀_•́)ง**
 
+----------
 
 
-
-#### 2019年12月11日 更新 （v1.0.5）
+### 2019年12月11日 更新 （v1.0.5）
 
 1.优化逻辑，并支持CocoaPods： ```pod 'ACActionSheet'```
 
@@ -48,7 +48,7 @@
 
 
 
-#### (v1.0.0)
+### (v1.0.0)
 
 - **这是微信效果截图**
 
@@ -112,10 +112,10 @@ typedef void(^ACActionSheetBlock)(NSInteger buttonIndex);
  *  type block
  *
  *  @param title                  title            (可以为空)
- *  @param delegate               delegate
  *  @param cancelButtonTitle      "取消"按钮         (默认有)
  *  @param destructiveButtonTitle "警示性"(红字)按钮  (可以为空)
  *  @param otherButtonTitles      otherButtonTitles
+ *  @param actionSheetBlock       actionSheetBlock
  */
 - (instancetype)initWithTitle:(NSString *)title
             cancelButtonTitle:(NSString *)cancelButtonTitle
