@@ -5,7 +5,22 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/GardenerYun/ACActionSheet/master/LICENSE)
 ![podversion](https://img.shields.io/cocoapods/v/ACActionSheet.svg)
 
-#### 2019年12月11日 更新
+### **系统UIActionSheet其实挺好用的。但是有时候系统的风格跟APP有些不搭。而且在iOS8.0 UIKit更新了UIAlertController，苹果建议：*UIActionSheet is deprecated. Use UIAlertController with a preferredStyle of UIAlertControllerStyleActionSheet instead*。**
+
+### [ACActionSheet][1]是仿微信效果的，简洁清新，方便好用
+
+>  GitHub:     https://github.com/GardenerYun
+
+> Email:      gardeneryun@foxmail.com
+
+> 简书博客地址: http://www.jianshu.com/users/8489e70e237d/latest_articles
+
+>  如有问题或建议请联系我，我会马上解决问题~ (ง •̀_•́)ง**
+
+
+
+
+#### 2019年12月11日 更新 （v1.0.5）
 
 1.优化逻辑，并支持CocoaPods： ```pod 'ACActionSheet'```
 
@@ -32,19 +47,8 @@
 ```
 
 
-> **系统UIActionSheet其实挺好用的。但是有时候系统的风格跟APP有些不搭。而且在iOS8.0 UIKit更新了UIAlertController，苹果建议：*UIActionSheet is deprecated. Use UIAlertController with a preferredStyle of UIAlertControllerStyleActionSheet instead*。**
 
->  [ACActionSheet][1]是仿微信效果的，简洁清新，方便好用
-
->  GitHub:     https://github.com/GardenerYun
-
-> Email:      gardeneryun@foxmail.com
-
-> 简书博客地址: http://www.jianshu.com/users/8489e70e237d/latest_articles
-
->  如有问题或建议请联系我，我会马上解决问题~ (ง •̀_•́)ง**
-
-
+#### (v1.0.0)
 
 - **这是微信效果截图**
 
