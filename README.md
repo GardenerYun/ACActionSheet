@@ -1,8 +1,40 @@
-# [ACActionSheet][1] - 仿微信ActionSheet
 
-> **系统UIActionSheet其实挺好用的。但是有时候系统的风格跟APP有些不搭。
-而且在iOS8.0 UIKit更新了UIAlertController，苹果建议：*UIActionSheet is deprecated. Use UIAlertController with a preferredStyle of UIAlertControllerStyleActionSheet instead*。（使用UIActionSheet Xcode就会报deprecate的警告，挺烦的）
-[ACActionSheet][1]是仿微信效果的，简洁清新，方便好用 
+
+# [ACActionSheet][1] - 一个简洁好用的ActionSheet/AlertView
+
+[![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/GardenerYun/ACActionSheet/master/LICENSE)
+![podversion](https://img.shields.io/cocoapods/v/ACActionSheet.svg)
+
+#### 2019年12月11日 更新
+
+1.优化逻辑，并支持CocoaPods： ```pod 'ACActionSheet'```
+
+2.新增类目```UIAlertController+ACAlertView``` 
+  为UIAlertController以UIAlertView（Deprecate）代码风格新增block初始化方法，详情见代码：
+
+```
++ (instancetype)alertControllerWithTitle:(nullable NSString *)title
+                                 message:(nullable NSString *)message
+                       cancelButtonTitle:(nullable NSString *)cancelButtonTitle
+                      confirmButtonTitle:(nullable NSString *)confirmButtonTitle
+                          preferredStyle:(UIAlertControllerStyle)preferredStyle
+                          alertViewBlock:(nullable ACAlertViewBlock)alertViewBlock;
+
+
+
++ (instancetype)alertControllerWithTitle:(nullable NSString *)title
+                                 message:(nullable NSString *)message
+                       cancelButtonTitle:(nullable NSString *)cancelButtonTitle
+                      confirmButtonTitle:(nullable NSString *)confirmButtonTitle
+                       otherButtonTitles:(nullable NSArray <NSString *>*)otherButtonTitles
+                          preferredStyle:(UIAlertControllerStyle)preferredStyle
+                          alertViewBlock:(nullable ACAlertViewBlock)alertViewBlock;
+```
+
+
+> **系统UIActionSheet其实挺好用的。但是有时候系统的风格跟APP有些不搭。而且在iOS8.0 UIKit更新了UIAlertController，苹果建议：*UIActionSheet is deprecated. Use UIAlertController with a preferredStyle of UIAlertControllerStyleActionSheet instead*。**
+
+>  [ACActionSheet][1]是仿微信效果的，简洁清新，方便好用
 
 >  GitHub:     https://github.com/GardenerYun
 
