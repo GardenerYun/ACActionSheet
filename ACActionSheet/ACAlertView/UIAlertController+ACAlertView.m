@@ -36,7 +36,7 @@
 
 @implementation UIAlertController (ACAlertView)
 
-
+#pragma mark - init/create methods
 + (instancetype)alertControllerWithTitle:(nullable NSString *)title
                                  message:(nullable NSString *)message
                        cancelButtonTitle:(nullable NSString *)cancelButtonTitle
@@ -95,6 +95,7 @@
 }
 
 
+#pragma mark - Public methods
 - (void)show {
     [self showWithAnimated:YES completion:nil];
 }
@@ -105,6 +106,7 @@
 }
 
 
+#pragma mark - Private methods
 - (UIViewController *)_getCurrentViewController{
 
     UIViewController* currentViewController = [[[UIApplication sharedApplication] delegate] window].rootViewController;;

@@ -155,7 +155,7 @@
         if (i==0 && _destructiveButtonTitle.length) {
             [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         }
-        UIImage *image = [UIImage imageNamed:@"ACActionSheet.bundle/actionSheetHighLighted.png"];
+        UIImage *image = [UIImage imageWithContentsOfFile:[[self _acBundle] pathForResource:@"actionSheetHighLighted@2x" ofType:@"png"]];
         [button setBackgroundImage:image forState:UIControlStateHighlighted];
         [button addTarget:self action:@selector(_didClickButton:) forControlEvents:UIControlEventTouchUpInside];
         CGFloat buttonY = ACButtonHeight * (i + (_title.length>0?1:0));
@@ -190,7 +190,7 @@
     cancelButton.backgroundColor = [UIColor whiteColor];
     cancelButton.titleLabel.font = ACButtonTitleFont;
     [cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    UIImage *image = [UIImage imageNamed:@"ACActionSheet.bundle/actionSheetHighLighted.png"];
+    UIImage *image = [UIImage imageWithContentsOfFile:[[self _acBundle] pathForResource:@"actionSheetHighLighted@2x" ofType:@"png"]];
     [cancelButton setBackgroundImage:image forState:UIControlStateHighlighted];
     
     [cancelButton addTarget:self action:@selector(_didClickButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -204,6 +204,24 @@
     
 }
 
+- (void)show {
+
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:self];
+    
+    self.hidden = NO;
+    
+    [UIView animateWithDuration:ACShowAnimateDuration animations:^{
+        _darkShadowView.alpha = ACDarkShadowViewAlpha;
+        _buttonBackgroundView.transform = CGAffineTransformMakeTranslation(0, -_buttonBackgroundView.frame.size.height);
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+}
+
+
+#pragma mark - Private methods
 - (void)_didClickButton:(UIButton *)button {
 
     if (_delegate && [_delegate respondsToSelector:@selector(actionSheet:didClickedButtonAtIndex:)]) {
@@ -230,22 +248,6 @@
     [self _hide];
 }
 
-- (void)show {
-
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    [window addSubview:self];
-    
-    self.hidden = NO;
-    
-    [UIView animateWithDuration:ACShowAnimateDuration animations:^{
-        _darkShadowView.alpha = ACDarkShadowViewAlpha;
-        _buttonBackgroundView.transform = CGAffineTransformMakeTranslation(0, -_buttonBackgroundView.frame.size.height);
-    } completion:^(BOOL finished) {
-        
-    }];
-    
-}
-
 - (void)_hide {
     
     [UIView animateWithDuration:ACHideAnimateDuration animations:^{
@@ -255,6 +257,14 @@
         self.hidden = YES;
         [self removeFromSuperview];
     }];
+}
+
+
+- (NSBundle *)_acBundle {
+    
+    NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:[ACActionSheet class]] pathForResource:@"ACActionSheet" ofType:@"bundle"]];
+    
+    return bundle;
 }
 
 /*

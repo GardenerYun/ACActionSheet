@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ZZ-dI-m1J">
-                                <rect key="frame" x="142.5" y="178" width="129" height="40"/>
+                                <rect key="frame" x="142.5" y="148" width="129" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="LqF-M7-6xT"/>
                                 </constraints>
@@ -49,7 +49,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9l-kx-wsP">
-                                <rect key="frame" x="134" y="258" width="146" height="40"/>
+                                <rect key="frame" x="134" y="228" width="146" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="oIh-7Z-7eY"/>
                                 </constraints>
@@ -59,7 +59,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWF-jy-hOn">
-                                <rect key="frame" x="132.5" y="418" width="149" height="40"/>
+                                <rect key="frame" x="132.5" y="388" width="149" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="MlZ-Gh-vjq"/>
                                 </constraints>
@@ -69,7 +69,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihe-yZ-int">
-                                <rect key="frame" x="121.5" y="338" width="171" height="40"/>
+                                <rect key="frame" x="121.5" y="308" width="171" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="kkt-3b-oAF"/>
                                 </constraints>
@@ -79,13 +79,23 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5T3-PH-gPZ">
-                                <rect key="frame" x="101.5" y="509" width="211" height="40"/>
+                                <rect key="frame" x="122" y="468" width="170" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Cmw-BV-12g"/>
                                 </constraints>
-                                <state key="normal" title="系统UIAlertController 类目方法"/>
+                                <state key="normal" title="ACAlertView类目  双按钮"/>
                                 <connections>
                                     <action selector="_showUIAlertControllerAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JZ3-xg-2tk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibj-7X-mU0">
+                                <rect key="frame" x="122" y="548" width="170" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6Zg-ns-PGn"/>
+                                </constraints>
+                                <state key="normal" title="ACAlertView类目  多按钮"/>
+                                <connections>
+                                    <action selector="_showUIAlertControllerMoreButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KgX-zA-jns"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -94,12 +104,14 @@
                             <constraint firstItem="ihe-yZ-int" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="82e-q3-odG"/>
                             <constraint firstItem="R9l-kx-wsP" firstAttribute="top" secondItem="1ZZ-dI-m1J" secondAttribute="bottom" constant="40" id="KCh-Dh-rOM"/>
                             <constraint firstItem="1ZZ-dI-m1J" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RgM-uK-9Jk"/>
+                            <constraint firstItem="ibj-7X-mU0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YUJ-uv-UUD"/>
                             <constraint firstItem="5T3-PH-gPZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZMh-BT-MNz"/>
                             <constraint firstItem="xWF-jy-hOn" firstAttribute="top" secondItem="ihe-yZ-int" secondAttribute="bottom" constant="40" id="bEl-7J-x7f"/>
-                            <constraint firstItem="5T3-PH-gPZ" firstAttribute="top" secondItem="xWF-jy-hOn" secondAttribute="bottom" constant="51" id="mH2-aw-wKd"/>
+                            <constraint firstItem="5T3-PH-gPZ" firstAttribute="top" secondItem="xWF-jy-hOn" secondAttribute="bottom" constant="40" id="mH2-aw-wKd"/>
                             <constraint firstItem="ihe-yZ-int" firstAttribute="top" secondItem="R9l-kx-wsP" secondAttribute="bottom" constant="40" id="mNR-jC-iUL"/>
                             <constraint firstItem="xWF-jy-hOn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vBH-GB-d53"/>
-                            <constraint firstItem="1ZZ-dI-m1J" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="90" id="wed-AK-dnB"/>
+                            <constraint firstItem="1ZZ-dI-m1J" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="wed-AK-dnB"/>
+                            <constraint firstItem="ibj-7X-mU0" firstAttribute="top" secondItem="5T3-PH-gPZ" secondAttribute="bottom" constant="40" id="yAn-nu-QJi"/>
                             <constraint firstItem="R9l-kx-wsP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zCw-eS-ybn"/>
                         </constraints>
                     </view>

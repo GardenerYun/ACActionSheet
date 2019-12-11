@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A866BB423A0BFF600615566 /* UIAlertController+ACAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A866BB223A0BFF600615566 /* UIAlertController+ACAlertView.m */; };
 		5AE026B4239E2E3400C853A1 /* ACActionSheet.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5AE026AF239E2E3400C853A1 /* ACActionSheet.bundle */; };
 		5AE026B5239E2E3400C853A1 /* ACActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE026B0239E2E3400C853A1 /* ACActionSheet.m */; };
-		5AE026B6239E2E3400C853A1 /* UIAlertController+ACAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE026B2239E2E3400C853A1 /* UIAlertController+ACAlertView.m */; };
 		5C3538921CD8737300731917 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C35388B1CD8737300731917 /* AppDelegate.m */; };
 		5C3538931CD8737300731917 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C35388C1CD8737300731917 /* Assets.xcassets */; };
 		5C3538961CD8737300731917 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C35388F1CD8737300731917 /* main.m */; };
@@ -19,11 +19,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A866BB223A0BFF600615566 /* UIAlertController+ACAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+ACAlertView.m"; sourceTree = "<group>"; };
+		5A866BB323A0BFF600615566 /* UIAlertController+ACAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ACAlertView.h"; sourceTree = "<group>"; };
 		5AE026AE239E2E3400C853A1 /* ACActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACActionSheet.h; sourceTree = "<group>"; };
 		5AE026AF239E2E3400C853A1 /* ACActionSheet.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ACActionSheet.bundle; sourceTree = "<group>"; };
 		5AE026B0239E2E3400C853A1 /* ACActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACActionSheet.m; sourceTree = "<group>"; };
-		5AE026B2239E2E3400C853A1 /* UIAlertController+ACAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+ACAlertView.m"; sourceTree = "<group>"; };
-		5AE026B3239E2E3400C853A1 /* UIAlertController+ACAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ACAlertView.h"; sourceTree = "<group>"; };
 		5C3538701CD844B900731917 /* ACActionSheetDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACActionSheetDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C35388A1CD8737300731917 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ACActionSheetDemo/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		5C35388B1CD8737300731917 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ACActionSheetDemo/AppDelegate.m; sourceTree = SOURCE_ROOT; };
@@ -47,30 +47,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A866BB123A0BFF600615566 /* ACAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				5A866BB323A0BFF600615566 /* UIAlertController+ACAlertView.h */,
+				5A866BB223A0BFF600615566 /* UIAlertController+ACAlertView.m */,
+			);
+			path = ACAlertView;
+			sourceTree = "<group>";
+		};
 		5AE026AD239E2E3400C853A1 /* ACActionSheet */ = {
 			isa = PBXGroup;
 			children = (
-				5AE026AF239E2E3400C853A1 /* ACActionSheet.bundle */,
 				5AE026AE239E2E3400C853A1 /* ACActionSheet.h */,
 				5AE026B0239E2E3400C853A1 /* ACActionSheet.m */,
+				5AE026AF239E2E3400C853A1 /* ACActionSheet.bundle */,
+				5A866BB123A0BFF600615566 /* ACAlertView */,
 			);
 			path = ACActionSheet;
-			sourceTree = "<group>";
-		};
-		5AE026B1239E2E3400C853A1 /* ACAlertView */ = {
-			isa = PBXGroup;
-			children = (
-				5AE026B3239E2E3400C853A1 /* UIAlertController+ACAlertView.h */,
-				5AE026B2239E2E3400C853A1 /* UIAlertController+ACAlertView.m */,
-			);
-			path = ACAlertView;
 			sourceTree = "<group>";
 		};
 		5C3538671CD844B900731917 = {
 			isa = PBXGroup;
 			children = (
 				5AE026AD239E2E3400C853A1 /* ACActionSheet */,
-				5AE026B1239E2E3400C853A1 /* ACAlertView */,
 				5C3538721CD844B900731917 /* ACActionSheetDemo */,
 				5C3538711CD844B900731917 /* Products */,
 			);
@@ -185,7 +185,7 @@
 			files = (
 				5C3538971CD8737300731917 /* ViewController.m in Sources */,
 				5AE026B5239E2E3400C853A1 /* ACActionSheet.m in Sources */,
-				5AE026B6239E2E3400C853A1 /* UIAlertController+ACAlertView.m in Sources */,
+				5A866BB423A0BFF600615566 /* UIAlertController+ACAlertView.m in Sources */,
 				5C3538961CD8737300731917 /* main.m in Sources */,
 				5C3538921CD8737300731917 /* AppDelegate.m in Sources */,
 			);
@@ -306,7 +306,7 @@
 				INFOPLIST_FILE = ACActionSheetDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = AC.ACActionSheet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = spayCommonPro;
@@ -322,7 +322,7 @@
 				INFOPLIST_FILE = ACActionSheetDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = AC.ACActionSheet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = spayCommonPro;
