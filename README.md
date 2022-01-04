@@ -2,8 +2,11 @@
 
 # [ACActionSheet][1] - 一个简洁好用的ActionSheet/AlertView
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/GardenerYun/ACActionSheet/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/GardenerYun/ACActionSheet/master/LICENSE)
 ![podversion](https://img.shields.io/cocoapods/v/ACActionSheet.svg)
+[![CocoaPods](http://img.shields.io/cocoapods/p/ACActionSheet.svg?style=flat)](http://cocoadocs.org/docsets/ACActionSheet)
+[![Support](https://img.shields.io/badge/support-iOS8+-blue.svg?style=flat)](https://www.apple.com/nl/ios/)
+
 
 ### **系统UIActionSheet其实挺好用的。但是有时候系统的风格跟APP有些不搭。而且在iOS8.0 UIKit更新了UIAlertController，苹果建议：*UIActionSheet is deprecated. Use UIAlertController with a preferredStyle of UIAlertControllerStyleActionSheet instead*。**
 
