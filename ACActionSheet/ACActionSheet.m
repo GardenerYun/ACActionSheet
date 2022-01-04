@@ -14,43 +14,29 @@
 #import "ACActionSheet.h"
 
 
-#define ACScreenWidth   [UIScreen mainScreen].bounds.size.width
-#define ACScreenHeight  [UIScreen mainScreen].bounds.size.height
-#define ACRGB(r,g,b)    [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
-#define ACButtonTitleFont     [UIFont systemFontOfSize:17.0f]
 
+@interface ACActionSheet ()
 
-#define ACTitleHeight 66.0f
-#define ACButtonHeight  55.0f
-#define ACSeparatorViewHeight 7.0f
+@property (nonatomic, copy) NSString *cancelButtonTitle;
+@property (nonatomic, copy) NSString *destructiveButtonTitle;
+@property (nonatomic, copy) NSArray *otherButtonTitles;
 
+@property (nonatomic, strong) UIView *buttonBackgroundView;
+@property (nonatomic, strong) UIView *darkShadowView;
 
-#define ACViewCornerRadius 10.0f
-
-#define ACDarkShadowViewAlpha 0.35f
-
-#define ACShowAnimateDuration 0.3f
-#define ACHideAnimateDuration 0.2f
-
-@interface ACActionSheet () {
-    
-    NSString *_cancelButtonTitle;
-    NSString *_destructiveButtonTitle;
-    NSArray *_otherButtonTitles;
-    
-    
-    UIView *_buttonBackgroundView;
-    UIView *_darkShadowView;
-}
-
+@property (nonatomic, strong) UIScrollView *scrollView;
 
 @property (nonatomic, copy) ACActionSheetBlock actionSheetBlock;
 
 @end
 
 @implementation ACActionSheet
-
-- (instancetype)initWithTitle:(NSString *)title delegate:(id<ACActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION {
+#pragma mark - Life Cycle
+- (instancetype)initWithTitle:(NSString *)title
+                     delegate:(id<ACActionSheetDelegate>)delegate
+            cancelButtonTitle:(NSString *)cancelButtonTitle
+       destructiveButtonTitle:(NSString *)destructiveButtonTitle
+            otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION {
 
     self = [super init];
     if(self) {
@@ -88,7 +74,11 @@
 }
 
 
-- (instancetype)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles actionSheetBlock:(ACActionSheetBlock) actionSheetBlock; {
+- (instancetype)initWithTitle:(NSString *)title
+            cancelButtonTitle:(NSString *)cancelButtonTitle
+       destructiveButtonTitle:(NSString *)destructiveButtonTitle
+            otherButtonTitles:(NSArray *)otherButtonTitles
+             actionSheetBlock:(ACActionSheetBlock)actionSheetBlock {
     
     self = [super init];
     if(self) {
@@ -111,40 +101,86 @@
     
 }
 
-
+#pragma mark - init/Create Methods
 - (void)_initSubViews {
 
     self.frame = CGRectMake(0, 0, ACScreenWidth, ACScreenHeight);
     self.backgroundColor = [UIColor clearColor];
     self.hidden = YES;
     
+    /// 透明灰色蒙版
     _darkShadowView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ACScreenWidth, ACScreenHeight)];
     _darkShadowView.backgroundColor = ACRGB(20, 20, 20);
     _darkShadowView.alpha = 0.0f;
     [self addSubview:_darkShadowView];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_dismissView:)];
+    /// 透明灰色蒙版 添加点击手势
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_dismissViewAction:)];
     [_darkShadowView addGestureRecognizer:tap];
     
-    
+    /// 所有按钮父视图
     _buttonBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     _buttonBackgroundView.backgroundColor = ACRGB(240, 240, 240);
     [self addSubview:_buttonBackgroundView];
     _buttonBackgroundView.layer.cornerRadius = ACViewCornerRadius;
     _buttonBackgroundView.clipsToBounds = YES;
     
+
+    [self _initNormalButtons];
+    
+}
+
+
+
+/// 初始化常规类型actionSheet
+- (void)_initNormalButtons {
+    /// 创建标题
+    CGFloat titleLabelHeight = 0;
     if (self.title.length) {
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, ACButtonHeight-ACTitleHeight, ACScreenWidth, ACTitleHeight)];
+        titleLabelHeight = ACTitleHeight;
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
+                                                                        0,
+                                                                        ACScreenWidth,
+                                                                        titleLabelHeight)];
         titleLabel.text = _title;
         titleLabel.numberOfLines = 0;
         titleLabel.textColor = ACRGB(125, 125, 125);
         titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.font = [UIFont systemFontOfSize:13.0f];
+        titleLabel.font = [UIFont systemFontOfSize:14.0f];
         titleLabel.backgroundColor = [UIColor whiteColor];
         [_buttonBackgroundView addSubview:titleLabel];
+        
+        UIView *line = [[UIView alloc] initWithFrame:CGRectZero];
+        line.backgroundColor = ACRGB(230, 230, 230);
+        line.frame = CGRectMake(0, titleLabelHeight-1, ACScreenWidth, 0.5);
+        [_buttonBackgroundView addSubview:line];
     }
     
+    /// 使用ScrollView展示button
+    /// 计算button个数，大于限制则表格可滑动. 小于等于限制个数则直接展示不可滑动
+    [self.buttonBackgroundView addSubview:self.scrollView];
+    NSInteger maxCount = ACScreenHeight/ACButtonHeight * 0.7;
+    NSInteger showListCount = _otherButtonTitles.count;
     
+    if (showListCount > maxCount) {
+        showListCount = maxCount;
+        self.scrollView.scrollEnabled = YES;
+        self.scrollView.showsVerticalScrollIndicator = YES;
+    } else {
+        self.scrollView.scrollEnabled = NO;
+        self.scrollView.showsVerticalScrollIndicator = NO;
+    }
+
+    self.scrollView.frame = CGRectMake(0, titleLabelHeight, ACScreenWidth, showListCount*ACButtonHeight);
+    [self.scrollView setContentSize:CGSizeMake(ACScreenWidth, _otherButtonTitles.count*ACButtonHeight)];
+    self.scrollView.contentOffset = CGPointMake(0, 0);
+    self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    if (@available(iOS 11.0, *)) {
+        self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+
+    }
+    
+    /// 创建Button
     for (int i = 0; i < _otherButtonTitles.count; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.tag = i;
@@ -152,38 +188,36 @@
         button.backgroundColor = [UIColor whiteColor];
         button.titleLabel.font = ACButtonTitleFont;
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        /// 如果有红色警示按钮
         if (i==0 && _destructiveButtonTitle.length) {
             [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         }
         UIImage *image = [UIImage imageWithContentsOfFile:[[self _acBundle] pathForResource:@"actionSheetHighLighted@2x" ofType:@"png"]];
         [button setBackgroundImage:image forState:UIControlStateHighlighted];
         [button addTarget:self action:@selector(_didClickButton:) forControlEvents:UIControlEventTouchUpInside];
-        CGFloat buttonY = ACButtonHeight * (i + (_title.length>0?1:0));
+        CGFloat buttonY = ACButtonHeight * i;
         button.frame = CGRectMake(0, buttonY, ACScreenWidth, ACButtonHeight);
-        [_buttonBackgroundView addSubview:button];
-        
+        [self.scrollView addSubview:button];
         
         UIView *line = [[UIView alloc] initWithFrame:CGRectZero];
         line.backgroundColor = ACRGB(230, 230, 230);
         line.frame = CGRectMake(0, buttonY, ACScreenWidth, 0.5);
-        [_buttonBackgroundView addSubview:line];
+        /// 第一个不添加分割线
+        if (i!=0) {
+            [self.scrollView addSubview:line];
+        }
     }
     
-    CGFloat separatorViewY = ACButtonHeight * (_otherButtonTitles.count + (_title.length>0?1:0));
+    /// 分割View
+    CGFloat separatorViewY = titleLabelHeight + ACButtonHeight * showListCount;
     
-    // 分割view
     UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, separatorViewY, ACScreenWidth, ACSeparatorViewHeight)];
     separatorView.backgroundColor = ACRGB(240, 240, 240);
     [_buttonBackgroundView addSubview:separatorView];
-    
-    CGFloat safeAreaHeight = 0.0f;
-    
-    if (@available(iOS 11.0, *)) {
-        safeAreaHeight = [UIApplication sharedApplication].keyWindow.safeAreaInsets.bottom;
-    }
-    
+
+    /// 创建取消Button
     UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    cancelButton.frame = CGRectMake(0, separatorViewY+ACSeparatorViewHeight, ACScreenWidth, ACButtonHeight+safeAreaHeight);
+    cancelButton.frame = CGRectMake(0, separatorViewY+ACSeparatorViewHeight, ACScreenWidth, ACButtonHeight+ACSafeAreaHeight);
     
     cancelButton.tag = _otherButtonTitles.count;
     [cancelButton setTitle:_cancelButtonTitle forState:UIControlStateNormal];
@@ -196,32 +230,39 @@
     [cancelButton addTarget:self action:@selector(_didClickButton:) forControlEvents:UIControlEventTouchUpInside];
     [_buttonBackgroundView addSubview:cancelButton];
     
-    [cancelButton setTitleEdgeInsets:UIEdgeInsetsMake(-safeAreaHeight, 0, 0, 0)];
+    [cancelButton setTitleEdgeInsets:UIEdgeInsetsMake(-ACSafeAreaHeight, 0, 0, 0)];
     
-    CGFloat height = ACButtonHeight * (_otherButtonTitles.count + (_title.length>0?1:0)) + ACSeparatorViewHeight + cancelButton.frame.size.height;
-    
+    /// 最后计算 所有按钮父视图的frame
+    CGFloat height = titleLabelHeight + ACButtonHeight * showListCount + ACSeparatorViewHeight + cancelButton.frame.size.height;
     _buttonBackgroundView.frame = CGRectMake(0, ACScreenHeight, ACScreenWidth, height);
-    
 }
+
+
+#pragma mark - Public Methods
 
 - (void)show {
 
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     [window addSubview:self];
-    
     self.hidden = NO;
-    
-    [UIView animateWithDuration:ACShowAnimateDuration animations:^{
-        _darkShadowView.alpha = ACDarkShadowViewAlpha;
-        _buttonBackgroundView.transform = CGAffineTransformMakeTranslation(0, -_buttonBackgroundView.frame.size.height);
+
+    ACWeakSelf;
+    [UIView animateWithDuration:ACShowAnimateDuration
+                          delay:0
+         usingSpringWithDamping:1
+          initialSpringVelocity:10
+                        options:UIViewAnimationOptionLayoutSubviews
+                     animations:^{
+        weakSelf.darkShadowView.alpha = ACDarkShadowViewAlpha;
+        weakSelf.buttonBackgroundView.transform = CGAffineTransformMakeTranslation(0, -weakSelf.buttonBackgroundView.frame.size.height);
     } completion:^(BOOL finished) {
         
     }];
-    
 }
 
 
 #pragma mark - Private methods
+/// 点击按钮
 - (void)_didClickButton:(UIButton *)button {
 
     if (_delegate && [_delegate respondsToSelector:@selector(actionSheet:didClickedButtonAtIndex:)]) {
@@ -235,7 +276,7 @@
     [self _hide];
 }
 
-- (void)_dismissView:(UITapGestureRecognizer *)tap {
+- (void)_dismissViewAction:(UITapGestureRecognizer *)tap {
 
     if (_delegate && [_delegate respondsToSelector:@selector(actionSheet:didClickedButtonAtIndex:)]) {
         [_delegate actionSheet:self didClickedButtonAtIndex:_otherButtonTitles.count];
@@ -250,12 +291,13 @@
 
 - (void)_hide {
     
+    ACWeakSelf;
     [UIView animateWithDuration:ACHideAnimateDuration animations:^{
-        _darkShadowView.alpha = 0;
-        _buttonBackgroundView.transform = CGAffineTransformIdentity;
+        weakSelf.darkShadowView.alpha = 0;
+        weakSelf.buttonBackgroundView.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
-        self.hidden = YES;
-        [self removeFromSuperview];
+        weakSelf.hidden = YES;
+        [weakSelf removeFromSuperview];
     }];
 }
 
@@ -267,12 +309,15 @@
     return bundle;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+#pragma mark - Getters Setters
+- (UIScrollView *)scrollView {
+    if (!_scrollView) {
+        _scrollView = UIScrollView.alloc.init;
+        _scrollView.alwaysBounceVertical = YES;
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.backgroundColor = UIColor.whiteColor;
+        
+    }
+    return _scrollView;
 }
-*/
-
 @end

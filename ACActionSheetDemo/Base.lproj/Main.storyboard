@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="a3W-xs-Iur">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="a3W-xs-Iur">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,8 +35,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ZZ-dI-m1J">
-                                <rect key="frame" x="142.5" y="148" width="129" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ZZ-dI-m1J">
+                                <rect key="frame" x="142.5" y="128" width="129" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="LqF-M7-6xT"/>
                                 </constraints>
@@ -48,8 +48,8 @@
                                     <action selector="_showUIActionSheet:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pNh-A1-Oxr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9l-kx-wsP">
-                                <rect key="frame" x="134" y="228" width="146" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9l-kx-wsP">
+                                <rect key="frame" x="134" y="208" width="146" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="oIh-7Z-7eY"/>
                                 </constraints>
@@ -58,8 +58,8 @@
                                     <action selector="_showUIAlertController:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zrL-F1-Luo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWF-jy-hOn">
-                                <rect key="frame" x="132.5" y="388" width="149" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWF-jy-hOn">
+                                <rect key="frame" x="132.5" y="368" width="149" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="MlZ-Gh-vjq"/>
                                 </constraints>
@@ -68,8 +68,8 @@
                                     <action selector="_showACActionSheetTypeBlock:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fZa-A2-CH1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihe-yZ-int">
-                                <rect key="frame" x="121.5" y="308" width="171" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihe-yZ-int">
+                                <rect key="frame" x="121.5" y="288" width="171" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="kkt-3b-oAF"/>
                                 </constraints>
@@ -78,8 +78,8 @@
                                     <action selector="_showACActionSheetTypeDelegate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hZB-mC-8ej"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5T3-PH-gPZ">
-                                <rect key="frame" x="122" y="468" width="170" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5T3-PH-gPZ">
+                                <rect key="frame" x="122" y="448" width="170" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Cmw-BV-12g"/>
                                 </constraints>
@@ -88,8 +88,8 @@
                                     <action selector="_showUIAlertControllerAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JZ3-xg-2tk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibj-7X-mU0">
-                                <rect key="frame" x="122" y="548" width="170" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibj-7X-mU0">
+                                <rect key="frame" x="122" y="528" width="170" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="6Zg-ns-PGn"/>
                                 </constraints>
@@ -110,7 +110,7 @@
                             <constraint firstItem="5T3-PH-gPZ" firstAttribute="top" secondItem="xWF-jy-hOn" secondAttribute="bottom" constant="40" id="mH2-aw-wKd"/>
                             <constraint firstItem="ihe-yZ-int" firstAttribute="top" secondItem="R9l-kx-wsP" secondAttribute="bottom" constant="40" id="mNR-jC-iUL"/>
                             <constraint firstItem="xWF-jy-hOn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vBH-GB-d53"/>
-                            <constraint firstItem="1ZZ-dI-m1J" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="wed-AK-dnB"/>
+                            <constraint firstItem="1ZZ-dI-m1J" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="wed-AK-dnB"/>
                             <constraint firstItem="ibj-7X-mU0" firstAttribute="top" secondItem="5T3-PH-gPZ" secondAttribute="bottom" constant="40" id="yAn-nu-QJi"/>
                             <constraint firstItem="R9l-kx-wsP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zCw-eS-ybn"/>
                         </constraints>

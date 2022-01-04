@@ -60,7 +60,11 @@
  */
 - (IBAction)_showACActionSheetTypeDelegate:(UIButton *)sender {
 
-    ACActionSheet *actionSheet = [[ACActionSheet alloc] initWithTitle:@"保存或删除数据" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"保存",@"更改", nil];
+    ACActionSheet *actionSheet = [[ACActionSheet alloc] initWithTitle:@"保存或删除数据"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"取消"
+                                               destructiveButtonTitle:@"删除"
+                                                    otherButtonTitles:@"保存",@"更改",@"按钮3",@"按钮4",@"按钮5",@"按钮6",@"按钮7",@"按钮8",@"按钮9",@"按钮10",@"按钮11",@"按钮12", nil];
 
     [actionSheet show];
 }
@@ -71,7 +75,11 @@
  *   ACActionSheet type block demo 
  */
 - (IBAction)_showACActionSheetTypeBlock:(UIButton *)sender {
-    ACActionSheet *actionSheet = [[ACActionSheet alloc] initWithTitle:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@[@"小视频",@"拍照",@"从手机相册选择"] actionSheetBlock:^(NSInteger buttonIndex) {
+    ACActionSheet *actionSheet = [[ACActionSheet alloc] initWithTitle:nil
+                                                    cancelButtonTitle:@"取消"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@[@"小视频",@"拍照",@"从手机相册选择"]
+                                                     actionSheetBlock:^(NSInteger buttonIndex) {
         NSLog(@"ACActionSheet block - %ld",buttonIndex);
     }];
     [actionSheet show];
@@ -79,7 +87,12 @@
 
 - (IBAction)_showUIAlertControllerAction:(id)sender {
     
-    [[UIAlertController alertControllerWithTitle:@"提示" message:@"保持或者删除数据" cancelButtonTitle:@"取消" confirmButtonTitle:@"确定" preferredStyle:UIAlertControllerStyleAlert alertViewBlock:^(NSInteger buttonIndex) {
+    [[UIAlertController alertControllerWithTitle:@"提示"
+                                         message:@"保持或者删除数据"
+                               cancelButtonTitle:@"取消"
+                              confirmButtonTitle:@"确定"
+                                  preferredStyle:UIAlertControllerStyleAlert
+                                  alertViewBlock:^(NSInteger buttonIndex) {
         NSLog(@"UIAlertController 类目 - %@",@(buttonIndex));
     }] show] ;
 
@@ -88,7 +101,13 @@
 
 - (IBAction)_showUIAlertControllerMoreButtonAction:(id)sender {
 
-    [[UIAlertController alertControllerWithTitle:@"提示" message:@"保持或者删除数据" cancelButtonTitle:@"取消" confirmButtonTitle:@"确定" otherButtonTitles:@[@"按钮3",@"按钮4",@"按钮5",@"按钮6"] preferredStyle:UIAlertControllerStyleAlert alertViewBlock:^(NSInteger buttonIndex) {
+    [[UIAlertController alertControllerWithTitle:@"提示"
+                                         message:@"保持或者删除数据"
+                               cancelButtonTitle:@"取消"
+                              confirmButtonTitle:@"确定"
+                               otherButtonTitles:@[@"按钮3",@"按钮4",@"按钮5",@"按钮6",@"按钮7",@"按钮8",@"按钮9",@"按钮10",@"按钮11",@"按钮12",@"按钮13",@"按钮14"]
+                                  preferredStyle:UIAlertControllerStyleActionSheet
+                                  alertViewBlock:^(NSInteger buttonIndex) {
         NSLog(@"UIAlertController 类目 - %@",@(buttonIndex));
     }] show] ;
     

@@ -44,7 +44,13 @@
                           preferredStyle:(UIAlertControllerStyle)preferredStyle
                           alertViewBlock:(nullable ACAlertViewBlock)alertViewBlock {
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message cancelButtonTitle:cancelButtonTitle confirmButtonTitle:confirmButtonTitle otherButtonTitles:nil preferredStyle:preferredStyle alertViewBlock:alertViewBlock];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
+                                                                             message:message
+                                                                   cancelButtonTitle:cancelButtonTitle
+                                                                  confirmButtonTitle:confirmButtonTitle
+                                                                   otherButtonTitles:nil
+                                                                      preferredStyle:preferredStyle
+                                                                      alertViewBlock:alertViewBlock];
     
     return alertController;
 }
